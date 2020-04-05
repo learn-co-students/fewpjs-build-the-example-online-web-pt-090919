@@ -4,14 +4,32 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-EMPTY_HEART.addEventListner('click', mimicServerCall)
+let glyphStates = {
+  '♡': '♥',
+  '♥': '♡'
+}
 
-fetch("http://mimicServer.example.com")
-  .then(resp => resp.json())
-  .then((obj => {
-    
-  }))
+let colorSates = {
+  "red" : "",
+  "" : "red"
+}
 
+let articleHeart = document.querySelectorAll(".like");
+function likeCallback(e){
+  let heart = e.target;
+  mimicServerCall("bogusUrl")
+  .then(function(serverMessage){
+    heart.innerText = glyphStates[heart.innerText];
+    heart.style.color = colorSates[heart.style.color];
+  })
+  .catch(function(error){
+    document.getElementById("modal").className = "";
+  });
+}
+
+for (let glyph of articleHeart) {
+  glyph.addEventListener("click", likeCallback)
+}
 
 
 //------------------------------------------------------------------------------
