@@ -32,11 +32,13 @@ function likeHeart(e) {
     })
     .catch(function(error) {
       let errorMessage = document.getElementById("modal");
-      errorMessage.className = "";
+      errorMessage.setAttributes('class', 'visible');
       errorMessage.innerHTML += `${error}`
-      setTimeout(function() { errorMessage.className = "hidden"}, 5000);
+      setTimeout(function() { errorMessage.setAttributes('class', 'hidden')}, 5000);
     });
 }
+
+
 
 
 
