@@ -6,16 +6,17 @@ const FULL_HEART = '♥'
 let heartBtn = document.querySelector('.like')
 let modal = document.querySelector('#modal')
 let modalMessage = modal.querySelector('#modal-message')
-
-heartBtn.forEach(btn => {
-  btn.addEventListener('click', (event) => {
-    let glyph = btn.querySelector('span.like-glyph')
-    if (glyph.textContent === EMPTY_HEART) {
-      glyph.textContent = FULL_HEART
-      glyph.classList.add('activated-heart')
+let heartBtns = document.querySelectorAll('span.like-glyph')
+// console.log(heartBtns)
+heartBtns.forEach(btn => {
+  btn.addEventListener('click', (eventData) => {
+    // console.log(event.target.textContent)
+    if (eventData.target.textContent === EMPTY_HEART) { 
+      eventData.target.textContent = FULL_HEART
+      // event.classList.add('activated-heart')
     } else {
-      glyph.textContent = EMPTY_HEART
-      glyph.classList.remove('activated-heart')
+      eventData.target.textContent = EMPTY_HEART
+      // glyph.classList.remove('activated-heart')
     }
   })
 })
